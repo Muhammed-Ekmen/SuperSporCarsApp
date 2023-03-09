@@ -30,7 +30,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
+    
+    
+    
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        print("applicationWillTerminate has worked")
+        //it runs when app is finished by System.
+    }
 
-
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        // let's assume the our app runs backgorund. when the app comes to foregorund, this function will runs.
+        print("applicationWillEnterForeground has worked")
+    }
+    
+    
+    
 }
 

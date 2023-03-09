@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>brand</key>
+		<string>Ferrari</string>
+        <key>model</key>
+        <string>Sf 90</string>
+        <key>Year</key>
+        <string>2023</string>
+        <key>Top Speed</key>
+        <string>339</string>
+        <key>imageName</key>
+        <string>sf90</string>
+	</dict>
+    <dict>
+        <key>brand</key>
+        <string>Lamborghini</string>
+        <key>model</key>
+        <string>Aventedor</string>
+        <key>Year</key>
+        <string>2023</string>
+        <key>Top Speed</key>
+        <string>350</string>
+        <key>imageName</key>
+        <string>aventedor</string>
+    </dict>
+    <dict>
+        <key>brand</key>
+        <string>Maserati</string>
+        <key>model</key>
+        <string>MC 20</string>
+        <key>Year</key>
+        <string>2023</string>
+        <key>Top Speed</key>
+        <string>325</string>
+        <key>imageName</key>
+        <string>mc20</string>
+    </dict>
+    <dict>
+        <key>brand</key>
+        <string>Porsche</string>
+        <key>model</key>
+        <string>911 Turbo S</string>
+        <key>Year</key>
+        <string>2023</string>
+        <key>Top Speed</key>
+        <string>328</string>
+        <key>imageName</key>
+        <string>911TurboS</string>
+    </dict>
+    <dict>
+        <key>brand</key>
+        <string>Mclaren</string>
+        <key>model</key>
+        <string>720 S</string>
+        <key>Year</key>
+        <string>2023</string>
+        <key>Top Speed</key>
+        <string>341</string>
+        <key>imageName</key>
+        <string>720S</string>
+    </dict>
+    <dict>
+        <key>brand</key>
+        <string>Ford</string>
+        <key>model</key>
+        <string>GT</string>
+        <key>Year</key>
+        <string>2023</string>
+        <key>Top Speed</key>
+        <string>348</string>
+        <key>imageName</key>
+        <string>gt</string>
+    </dict>
+    <dict>
+        <key>brand</key>
+        <string>Mercedes-Benz</string>
+        <key>model</key>
+        <string>Amg GTR</string>
+        <key>Year</key>
+        <string>2023</string>
+        <key>Top Speed</key>
+        <string>319</string>
+        <key>imageName</key>
+        <string>amgGtr</string>
+    </dict>
+    <dict>
+        <key>brand</key>
+        <string>Audi</string>
+        <key>model</key>
+        <string>R8 V10 Plus</string>
+        <key>Year</key>
+        <string>2023</string>
+        <key>Top Speed</key>
+        <string>326</string>
+        <key>imageName</key>
+        <string>r8</string>
+    </dict>
+    <dict>
+        <key>brand</key>
+        <string>Nissan</string>
+        <key>model</key>
+        <string>Skyline GTR</string>
+        <key>Year</key>
+        <string>2023</string>
+        <key>Top Speed</key>
+        <string>315</string>
+        <key>imageName</key>
+        <string>skyline</string>
+    </dict>
+    <dict>
+        <key>brand</key>
+        <string>Aston Martin</string>
+        <key>model</key>
+        <string>DBS Superleggra</string>
+        <key>Year</key>
+        <string>2023</string>
+        <key>Top Speed</key>
+        <string>339</string>
+        <key>imageName</key>
+        <string>dbs</string>
+    </dict>
+</array>
+</plist>
