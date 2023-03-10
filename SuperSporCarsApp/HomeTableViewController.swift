@@ -143,6 +143,7 @@
     # after taht create a delegate from customDelegate protocol.    CP19
     # in the favorite button action, you need to call delegate and give to carModel. CP20
     # well, go to prepare function and assing to delegate. this opearion s is similar to streams. CP21
+    
     [NOTE]
     if you doning this, you will encounter the an error. That error is unknown delegate.
         
@@ -150,7 +151,7 @@
         # add HomeTableViewDelegate to your HomeTableViewController. CP22
         # add the equatabel feature to your model class. CP24
         # after that, override the our favorite function from protocol. CP23
- 
+        
  */
 
 
@@ -161,20 +162,19 @@ import UIKit
 class HomeTableViewController: UITableViewController ,HomeTableViewControllerDelegate{  // CP22
     
     func markCarAsFavorite(carModel: ModelOfCars) {  // CP23
+        
         var sectionIndex:Int? = nil
         var carIndex:Int? = nil
         
-    
         for (index,cars) in IRepo.shared.sectionsOfBrands.enumerated() {
-            if let indexOfCars = cars.firstIndex(of:carModel){   
+            if let indexOfCars = cars.firstIndex(of:carModel){
                 sectionIndex = index
                 carIndex = indexOfCars
                 break
             }
         }
         
-    
-        if let sectionIndex = sectionIndex,let carIndex = carIndex {
+        if let sectionIndex = sectionIndex, let carIndex = carIndex {
             IRepo.shared.sectionsOfBrands[sectionIndex][carIndex].favorite = carModel.favorite
             tableView.reloadData()
         }

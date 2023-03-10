@@ -17,6 +17,8 @@ struct ModelOfCars:Equatable{        //CP1
     let image:UIImage?
     var favorite:Bool
     
+    
+    
     // CP24
     static func == (firstModelOfCar:ModelOfCars,secondModelOfCar:ModelOfCars) -> Bool {
         return firstModelOfCar.brand == secondModelOfCar.brand && firstModelOfCar.model == secondModelOfCar.model && firstModelOfCar.year == secondModelOfCar.year && firstModelOfCar.topSpeed == secondModelOfCar.topSpeed

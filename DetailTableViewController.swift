@@ -23,14 +23,6 @@ class DetailTableViewController: UITableViewController {
         setUpDatas()
     }
     
-    fileprivate func setUpFavoriteButtonTitle(_ dummyCarModel: ModelOfCars) {
-        if dummyCarModel.favorite{
-            favoriteButton.setTitle("Remove From Favorites", for: UIControl.State.normal)
-        }else{
-            favoriteButton.setTitle("Add To Favorites", for: UIControl.State.normal)
-        }
-    }
-    
     func setUpDatas(){
         guard let dummyCarModel = carModel else {return}
         brandLabel.text = dummyCarModel.brand
@@ -38,19 +30,26 @@ class DetailTableViewController: UITableViewController {
         yearLabel.text = dummyCarModel.year
         topSpeedLabel.text = "\(dummyCarModel.topSpeed)/Kmh"
         detailImage.image = dummyCarModel.image
-        setUpFavoriteButtonTitle(dummyCarModel)
+        
+        if dummyCarModel.favorite {
+            favoriteButton.setTitle("Remove From Favorites", for: UIControl.State.normal)
+        }else{
+            favoriteButton.setTitle("Add To Favorites", for: UIControl.State.normal)
+        }
     }
     
     
     @IBAction func favoriteButtonAction(_ sender: UIButton) {       // CP20
         guard let dummyCarModel = carModel else {return}
-        self.carModel?.favorite = !dummyCarModel.favorite
-        if (self.carModel?.favorite)! {
+        
+        carModel?.favorite = !dummyCarModel.favorite
+        
+        if (carModel?.favorite)!{
             favoriteButton.setTitle("Remove From Favorites", for: UIControl.State.normal)
         }else{
             favoriteButton.setTitle("Add To Favorites", for: UIControl.State.normal)
         }
-        delegate?.markCarAsFavorite(carModel: dummyCarModel)
+        delegate?.markCarAsFavorite(carModel: carModel!)
         
     }
 }
