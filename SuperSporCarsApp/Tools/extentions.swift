@@ -25,4 +25,9 @@ extension ModelOfCars {                                                         
             image = nil
         }
     }
+    
+    
+    
+    var firstLetter:String {return String(brand.prefix(1))}         // CP13
 }
+

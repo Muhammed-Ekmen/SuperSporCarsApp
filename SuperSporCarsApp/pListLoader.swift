@@ -36,7 +36,22 @@ struct PlistLoader{
         return data.compactMap {    ModelOfCars(data: $0)   }       // it is similar to jsonDecedo/Encode
     }
     
+    // CP 14.
     
+    
+    static var uniqueFirstLetters:[String] {
+        let firstLetters = getCars.map {$0.firstLetter}
+        let uniqueLetters = Set(firstLetters)
+        return Array(uniqueLetters).sorted()
+    }
+    
+    
+    static var sectionOfBrands : [[ModelOfCars]] {
+        return uniqueFirstLetters.map{firstLetter in
+            let filteredBrand = getCars.filter { $0.firstLetter == firstLetter}
+            return filteredBrand.sorted(by: {$0.brand < $1.brand})
+        }
+    }
 }
 
 
@@ -45,5 +60,4 @@ struct PlistLoader{
 
 /*
 this PlistLoader class incluide the getCars static function. So, we will be able to call datas thanks to this strucure.
- 
 */

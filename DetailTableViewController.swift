@@ -9,26 +9,48 @@ import UIKit
 
 class DetailTableViewController: UITableViewController {
     var carModel:ModelOfCars?
-    var dummyModel:ModelOfCars?
-    
     @IBOutlet weak var brandLabel: UILabel!
     @IBOutlet weak var carModelLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var topSpeedLabel: UILabel!
+    @IBOutlet weak var detailImage: UIImageView!
+    @IBOutlet weak var favoriteButton: UIButton!
     
+    var delegate: HomeTableViewControllerDelegate?  // CP19
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        carModel = dummyModel
+        setUpDatas()
     }
     
-    func setUpDatas(incomingCarModel:ModelOfCars){
-        dummyModel = incomingCarModel
-        if isViewLoaded{
-            brandLabel.text = dummyModel?.brand
-            carModelLabel.text = dummyModel?.model
-            yearLabel.text = dummyModel?.year
-            topSpeedLabel.text = dummyModel?.topSpeed
+    fileprivate func setUpFavoriteButtonTitle(_ dummyCarModel: ModelOfCars) {
+        if dummyCarModel.favorite{
+            favoriteButton.setTitle("Remove From Favorites", for: UIControl.State.normal)
+        }else{
+            favoriteButton.setTitle("Add To Favorites", for: UIControl.State.normal)
         }
+    }
+    
+    func setUpDatas(){
+        guard let dummyCarModel = carModel else {return}
+        brandLabel.text = dummyCarModel.brand
+        carModelLabel.text = dummyCarModel.model
+        yearLabel.text = dummyCarModel.year
+        topSpeedLabel.text = "\(dummyCarModel.topSpeed)/Kmh"
+        detailImage.image = dummyCarModel.image
+        setUpFavoriteButtonTitle(dummyCarModel)
+    }
+    
+    
+    @IBAction func favoriteButtonAction(_ sender: UIButton) {       // CP20
+        guard let dummyCarModel = carModel else {return}
+        self.carModel?.favorite = !dummyCarModel.favorite
+        if (self.carModel?.favorite)! {
+            favoriteButton.setTitle("Remove From Favorites", for: UIControl.State.normal)
+        }else{
+            favoriteButton.setTitle("Add To Favorites", for: UIControl.State.normal)
+        }
+        delegate?.markCarAsFavorite(carModel: dummyCarModel)
+        
     }
 }

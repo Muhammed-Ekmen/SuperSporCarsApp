@@ -21,6 +21,7 @@
 		9927456B29BA2D23005233A8 /* extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9927456A29BA2D23005233A8 /* extentions.swift */; };
 		9927456D29BA30F6005233A8 /* pListLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9927456C29BA30F6005233A8 /* pListLoader.swift */; };
 		9927456F29BA6CEB005233A8 /* DetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9927456E29BA6CEB005233A8 /* DetailTableViewController.swift */; };
+		998EB31729BB6B7800A44689 /* protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998EB31629BB6B7800A44689 /* protocols.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		9927456A29BA2D23005233A8 /* extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extentions.swift; sourceTree = "<group>"; };
 		9927456C29BA30F6005233A8 /* pListLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = pListLoader.swift; sourceTree = "<group>"; };
 		9927456E29BA6CEB005233A8 /* DetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableViewController.swift; sourceTree = "<group>"; };
+		998EB31629BB6B7800A44689 /* protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = protocols.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				9927456829BA2C81005233A8 /* enums.swift */,
 				9927456A29BA2D23005233A8 /* extentions.swift */,
+				998EB31629BB6B7800A44689 /* protocols.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				9927454929BA0A50005233A8 /* AppDelegate.swift in Sources */,
 				9927456B29BA2D23005233A8 /* extentions.swift in Sources */,
 				9927455F29BA1393005233A8 /* HomeTableViewCell.swift in Sources */,
+				998EB31729BB6B7800A44689 /* protocols.swift in Sources */,
 				9927456F29BA6CEB005233A8 /* DetailTableViewController.swift in Sources */,
 				9927456D29BA30F6005233A8 /* pListLoader.swift in Sources */,
 				9927454B29BA0A50005233A8 /* SceneDelegate.swift in Sources */,
@@ -343,6 +347,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -371,6 +376,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -14,5 +14,6 @@ class IRepo{
     static let shared = IRepo()
     
     var homeTableCellIdentifier:String = "cellOfHome"
-    var cars:[ModelOfCars] = PlistLoader.getCars     //CP6
+//    var cars:[ModelOfCars] = PlistLoader.getCars     //CP6
+    var sectionsOfBrands:[[ModelOfCars]] = PlistLoader.sectionOfBrands  // CP15
 }

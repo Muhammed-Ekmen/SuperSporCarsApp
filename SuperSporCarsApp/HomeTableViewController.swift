@@ -109,13 +109,47 @@
     # add 2 label like column. These will be title and subtitle.
     # after that, connect all labels and images to cell class. We have already made it. CP10
     # finally, set up these labels and images according to your model. CP11
+    
+    # well, all UI components are ready. now, we should send our car model to our detail screen. CP12 in this checkpoint,there are very
+    important notes. Check these notes!!!
  
+    # we have forgot the adding car image. so, go to the detailScreen on storyboard. Add the "View" from library at the top fo the screen. It's similar to Container. Adjust the height and witdh and apply background color transparant.
+    
+    # after the view, add UIImage on the view and connect to your DetailViewController.
  
  LISTING CELLS ACCORDING TO ALPHABET
- 
+    [DESCRIPTION]
+    now, we should adding some math processing.
+    
     [USAGE]
     
+    # go to the extension folder and add the simple closure that return the firstLetter of brand, CP13
+    # also, go the pListLoader file and add some structures. Description will be there. CP14
+    # now, we don't need to use cars list form IRepo. So, we have new list which listed with alphabet. and don't forget the change the list CP 15
+    # so, time to setting up the header of the each section. CP16 and CP17
+
  
+ 
+ ADDING AND REMOVING THE FAVORITES
+    [DESCRIPTION]
+    what we gonna do is creating our customDelegate and use it.
+ 
+    [USAGE]
+ 
+    # before the start we need to add favorite button on the detail screen. we need to IBOutler and action function. For doing that, add a new row on
+    the storyboard and enlarge the height. After that add a button.
+ 
+    # create our delegate with protocol. go to the Tools/protocols swift file.  CP18
+    # after taht create a delegate from customDelegate protocol.    CP19
+    # in the favorite button action, you need to call delegate and give to carModel. CP20
+    # well, go to prepare function and assing to delegate. this opearion s is similar to streams. CP21
+    [NOTE]
+    if you doning this, you will encounter the an error. That error is unknown delegate.
+        
+        [SOLUTION]
+        # add HomeTableViewDelegate to your HomeTableViewController. CP22
+        # add the equatabel feature to your model class. CP24
+        # after that, override the our favorite function from protocol. CP23
  
  */
 
@@ -124,37 +158,66 @@
 
 import UIKit
 
-class HomeTableViewController: UITableViewController {
-
+class HomeTableViewController: UITableViewController ,HomeTableViewControllerDelegate{  // CP22
+    
+    func markCarAsFavorite(carModel: ModelOfCars) {  // CP23
+        var sectionIndex:Int? = nil
+        var carIndex:Int? = nil
+        
+    
+        for (index,cars) in IRepo.shared.sectionsOfBrands.enumerated() {
+            if let indexOfCars = cars.firstIndex(of:carModel){   
+                sectionIndex = index
+                carIndex = indexOfCars
+                break
+            }
+        }
+        
+    
+        if let sectionIndex = sectionIndex,let carIndex = carIndex {
+            IRepo.shared.sectionsOfBrands[sectionIndex][carIndex].favorite = carModel.favorite
+            tableView.reloadData()
+        }
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad() }
 
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return IRepo.shared.sectionsOfBrands.count
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return IRepo.shared.cars.count
+        return IRepo.shared.sectionsOfBrands[section].count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: IRepo.shared.homeTableCellIdentifier, for: indexPath)
         if let homeCell = cell as? HomeTableViewCell{
             /*
-            All of them, before the custom cell.
-             
+             All of them, before the custom cell.
              homeCell.textLabel?.text = "\(IRepo.shared.cars[indexPath.row].brand)"
              homeCell.imageView?.image = IRepo.shared.cars[indexPath.row].image   // CP7
              homeCell.detailTextLabel?.text = IRepo.shared.cars[indexPath.row].year  // CP8
+            */
             
-             */
+            /*
+            
+            All Of them Before the listing according to Alphabet
             
             homeCell.brandLabel.text = IRepo.shared.cars[indexPath.row].brand       // CP11
             homeCell.carModelLabel.text = IRepo.shared.cars[indexPath.row].model
             homeCell.carImage.image = IRepo.shared.cars[indexPath.row].image
             homeCell.favoriteImage.isHidden = IRepo.shared.cars[indexPath.row].favorite
-        }
+             */
+            
+            let cellCarModel:ModelOfCars = IRepo.shared.sectionsOfBrands[indexPath.section][indexPath.row]
+            homeCell.brandLabel.text = cellCarModel.brand
+            homeCell.carModelLabel.text = cellCarModel.model
+            homeCell.carImage.image = cellCarModel.image
+            homeCell.favoriteImage.isHidden = !cellCarModel.favorite
+             }
         return cell
     }
     
@@ -170,14 +233,39 @@ class HomeTableViewController: UITableViewController {
         performSegue(withIdentifier: "detailScreen", sender: self)
     }
     
+    /*
+     //CP12
+        
+     [NOTE] As you know, we were reaching segue identifier according to viewController type. in here, we have used the alternative usage. Actually,
+     this usage is more effective and correct. Because the app may has more than one segue. So in this time, we shoudl use like this.
+     
+     first of all, use if else block to processing according to identifier.
+     Second, give the indexPath.
+     From here on, same things that you have already known.
+     */
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detailScreen"{
-            if let selectedIndexPath = tableView.indexPathForSelectedRow?.row{
-                if let detailViewCtrl = segue.destination as? DetailTableViewController{
-                    detailViewCtrl.carModel = IRepo.shared.cars[selectedIndexPath]
+        if segue.identifier == "detailScreen" {
+            if let indexPath = tableView.indexPathForSelectedRow{
+                let selectedCar = IRepo.shared.sectionsOfBrands[indexPath.section][indexPath.row]
+                guard let navigationController = segue.destination as? UINavigationController else {return}
+                if let detailViewCtrl = navigationController.viewControllers.first as? DetailTableViewController{
+                    detailViewCtrl.carModel = selectedCar
+                    detailViewCtrl.delegate = self  // CP21
                 }
             }
         }
     }
+    
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {   // CP16
+        return PlistLoader.uniqueFirstLetters[section]
+    }
+    
+    override func sectionIndexTitles(for tableView: UITableView) -> [String]? {                 // CP17
+        return PlistLoader.uniqueFirstLetters
+    }
 }
+
+
